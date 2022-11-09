@@ -1,5 +1,5 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Mauricio Montes's  nvim config: ~/.config/nvim/init.vim borrowed from Le Chen 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""{{{"}}}
+" Mauricio Montes'  nvim config: ~/.config/nvim/init.vim borrowed from Le Chen 
 """""""""""""""""""""" """""""""""""""""""""""""""""""
 " vim: filetype=vim foldmethod=marker foldlevel=0 foldcolumn=3
 " Preferred basic settings:
@@ -219,6 +219,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "}}}
+source ~/.config/nvim/my_vim/my_vimwiki.vim
 
 "{{{ Choose colorscheme
 set background=dark
