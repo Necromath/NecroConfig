@@ -206,6 +206,7 @@ call vundle#begin()
     Plugin 'vimwiki/vimwiki'
     Plugin 'preservim/nerdtree'
     Plugin 'tpope/vim-fugitive'
+    Plugin 'altercation/vim-colors-solarized'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
