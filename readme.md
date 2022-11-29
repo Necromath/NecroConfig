@@ -15,3 +15,8 @@ https://stackoverflow.com/questions/68775869/message-support-for-password-authen
 This is how we bind the ssh to the repo
 
 https://gist.github.com/xirixiz/b6b0c6f4917ce17a90e00f9b60566278
+
+To change the git editor from nano, just write 
+
+git config --global core.editor nvim
+
