@@ -122,6 +122,18 @@ endwhile
 " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 
+""This requires vim-easy-align
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" The following is from https://calebeby.gitlab.io/blog/2016/formatting-markdown-tables-in-vim/
+" visual select and <tab>
+au FileType markdown vmap <tab> :EasyAlign*<Bar><Enter>
+
+""
+autocmd FileType tex nmap bb mmviega*&'m
 " Visual move lines upwards or downwards
 xnoremap K :move '<-2<CR>gv=gv
 xnoremap J :move '>+1<CR>gv=gv
@@ -131,6 +143,17 @@ xnoremap J :move '>+1<CR>gv=gv
 " nnoremap <leader>[ :FzfPreviewAllBuffers<CR>
 nnoremap <leader>l :FzfPreviewBufferLines<CR>
 " nnoremap <leader>[ :Buffers<CR>
+
+
+"" Add, Commit, and Push files inside Nvim
+
+nnoremap <leader>ga :G add *
+nnoremap <leader>gc :G commit
+nnoremap <leader>gp :G push
+
+"" Compile Tex Files
+
+nnoremap <leader><leader> :w<cr>:VimtexCompile<CR>
 
 
 " The following to lines really delete things without cut.
@@ -207,6 +230,15 @@ call vundle#begin()
     Plugin 'preservim/nerdtree'
     Plugin 'tpope/vim-fugitive'
     Plugin 'altercation/vim-colors-solarized'
+    Plugin 'lervag/vimtex'
+    Plugin 'shaunsingh/moonlight.nvim'
+    Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plugin 'junegunn/fzf.vim'
+    Plugin 'godlygeek/tabular'
+    Plugin 'junegunn/vim-easy-align'
+
+
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
