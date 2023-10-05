@@ -24,12 +24,12 @@ set timeoutlen=800
 set backspace=0
 
 " set notermguicolors
-if has("termguicolors")     " set true colors
-    set t_8f=\[[38;2;%lu;%lu;%lum
-    set t_8b=\[[48;2;%lu;%lu;%lum
-    hi! Normal ctermbg=NONE guibg=NONE
-    hi! NonText ctermbg=NONE guibg=NONE
-endif
+"if has("termguicolors")     " set true colors
+"    set t_8f=\[[38;2;%lu;%lu;%lum
+"    set t_8b=\[[48;2;%lu;%lu;%lum
+"    hi! Normal ctermbg=NONE guibg=NONE
+"    hi! NonText ctermbg=NONE guibg=NONE
+"endif
 set termguicolors
 set background=dark
 
@@ -147,14 +147,14 @@ nnoremap <leader>l :FzfPreviewBufferLines<CR>
 
 "" Add, Commit, and Push files inside Nvim
 
-nnoremap <leader>ga :G add *
-nnoremap <leader>gc :G commit
-nnoremap <leader>gp :G push
+nnoremap <leader>ga :G add * <cr>
+nnoremap <leader>gc :G commit <cr>
+nnoremap <leader>gp :G push <cr>
 
 "" Compile Tex Files
 
 nnoremap <leader><leader> :w<cr>:VimtexCompile<CR>
-
+nnoremap <leader>o :w<cr>:!zathura %:r.pdf <cr>
 
 " The following to lines really delete things without cut.
 nnoremap <leader>d "_d
@@ -162,7 +162,7 @@ xnoremap <leader>d "_d
 " Do not pollute my buffer by pasting
 vnoremap <leader>p "_dP
 
-nnoremap <leader>o :only<cr>
+"nnoremap <leader>o :only<cr>
 nnoremap <space><space> za
 " {{{ toggle conceal level
 " https://github.com/tpope/vim-unimpaired/issues/105
@@ -183,6 +183,17 @@ nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>el :vsplit  ~/.config/nvim/my_vim/LatexProject.vim<cr>
 inoremap jk <esc>
+
+"Lua call here
+"
+"source ~/.config/nvim/lua/le/telescope/init.lua
+
+nnoremap // :Telescope live_grep <cr>
+nnoremap /f :Telescope find_files <cr>
+nnoremap /b :Telescope buffers <cr>
+nnoremap /h :Telescope help_tags <cr>
+nnoremap /c :Telescope commands <cr>
+
 
 "So I can move around in insert
 " inoremap <C-k> <C-o>gk
@@ -227,6 +238,7 @@ call vundle#begin()
     Plugin 'vifm/vifm.vim'
     Plugin 'kamykn/spelunker.vim'
     Plugin 'vimwiki/vimwiki'
+    Plugin 'jpalardy/vim-slime'
     Plugin 'preservim/nerdtree'
     Plugin 'tpope/vim-fugitive'
     Plugin 'altercation/vim-colors-solarized'
@@ -236,6 +248,8 @@ call vundle#begin()
     Plugin 'junegunn/fzf.vim'
     Plugin 'godlygeek/tabular'
     Plugin 'junegunn/vim-easy-align'
+    Plugin 'nvim-lua/plenary.nvim'
+    Plugin 'nvim-telescope/telescope.nvim'
 
 
 
@@ -244,6 +258,9 @@ filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
+
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -267,7 +284,8 @@ set background=dark
 " colorscheme nvcode
 " colorscheme highlite
 " colorscheme iceberg
-colorscheme dracula
+" colorscheme dracula
+colorscheme moonlight
 " colorscheme everforest
 " let g:everforest_background = 'hard'
 " let g:airline_theme = 'everforest'
@@ -280,15 +298,16 @@ colorscheme dracula
 syntax enable
 " set background=dark
 " set term=screen-256color
-highlight Pmenu ctermbg=bg ctermfg=white guibg=DarkGreen
+highlight Pmenu ctermfg=white guibg=DarkGreen
 " highlight Pmenu ctermbg=black ctermfg=white guibg=Non
 " highlight Pmenu ctermbg=black ctermfg=white guibg=Non
 highlight PmenuSel ctermbg=DarkYellow ctermfg=white guibg=Non
 " highlight CursorLine ctermbg=black
 " highlight CursorColumn ctermbg=black
-highlight CursorLine   ctermbg=DarkGray
-highlight CursorColumn ctermbg=DarkGray
-highlight Visual ctermbg=DarkGreen ctermfg=bg
+highlight CursorLine   ctermbg=DarkGrey
+highlight CursorColumn ctermbg=DarkGrey
+highlight Visual ctermbg=DarkGreen 
 highlight ColorColumn ctermbg=black
+
 set foldmethod=marker
 
