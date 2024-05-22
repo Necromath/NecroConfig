@@ -1,0 +1,31 @@
+-- Setup language servers.
+local lspconfig = require("lspconfig")
+-- python
+-- 1. pyright
+lspconfig.pyright.setup({})
+-- 2. jedi_language_server
+-- lspconfig.jedi_language_server.setup({})
+-- 3. pylsp
+-- require("lspconfig").pylsp.setup({
+-- 	on_attach = function(client, bufnr)
+-- 		-- Keybindings or other setup code here
+-- 	end,
+-- 	settings = {
+-- 		pylsp = {
+-- 			plugins = {
+-- 				pydocstyle = { enabled = true },
+-- 				pylint = { enabled = true },
+-- 				-- other plugin settings
+-- 			},
+-- 		},
+-- 	},
+-- })
+-- 4. pylyzer
+-- lspconfig.pylyzer.setup({
+-- 	python = {
+-- 		checkOnType = false,
+-- 		diagnostics = true,
+-- 		inlayHints = true,
+-- 		smartCompletion = true,
+-- 	},
+-- })
